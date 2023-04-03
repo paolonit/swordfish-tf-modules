@@ -51,6 +51,6 @@ resource "azurerm_storage_container" "program_storage_container" {
 resource "azurerm_role_assignment" "program_storage_container_role_assignment" {
   provider              = azurerm
   scope                = resource.azurerm_storage_container.program_storage_container.resource_manager_id
-  role_definition_name = "Owner"
+  role_definition_name = "Contributor"
   principal_id         = resource.azuread_group.program_aad_group.object_id
 }
