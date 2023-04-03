@@ -48,17 +48,8 @@ resource "azurerm_storage_container" "program_storage_container" {
   container_access_type = "private"
 }
 
-output "sa_id" {
-  value = resource.azurerm_storage_container.program_storage_container.id
+resource "azurerm_role_assignment" "example" {
+  scope                = resource.azurerm_storage_container.program_storage_container.resource_manager_id
+  role_definition_name = "Owner"
+  principal_id         = resource.azuread_group.program_aad_group.object_id
 }
-
-output "sa_resource_manager_id" {
-  value = resource.azurerm_storage_container.program_storage_container.resource_manager_id
-}
-
-
-# resource "azurerm_role_assignment" "example" {
-#   scope                = resource.azurerm_storage_container.primary.id
-#   role_definition_name = "Reader"
-#   principal_id         = resource.azuread_group.program_aad_group.object_id
-# }
