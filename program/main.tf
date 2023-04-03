@@ -48,7 +48,7 @@ resource "azurerm_storage_container" "program_storage_container" {
   container_access_type = "private"
 }
 
-resource "azurerm_role_assignment" "example" {
+resource "azurerm_role_assignment" "program_storage_container_role_assignment" {
   scope                = resource.azurerm_storage_container.program_storage_container.resource_manager_id
   role_definition_name = "Owner"
   principal_id         = resource.azuread_group.program_aad_group.object_id
