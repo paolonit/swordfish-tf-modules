@@ -18,7 +18,7 @@ resource "azuread_group" "program_aad_group" {
   security_enabled = true
 }
 
-resource "azurerm_storage_container" "example" {
+resource "azurerm_storage_container" "program_storage_container" {
   name                  = var.program_name
   storage_account_name  = "swordfish${var.center_name}"
   container_access_type = "private"
