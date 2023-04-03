@@ -41,10 +41,10 @@ resource "azuread_group" "program_aad_group" {
   security_enabled = true
 }
 
-resource "azurerm_storage_container" "program_storage_container" {
+resource "azurerm_storage_data_lake_gen2_filesystem" "program_storage_container" {
   provider              = azurerm
   name                  = var.program_name
-  storage_account_name  = "swordfish${var.center_name}"
+  storage_account_id  = "/subscriptions/df0394a0-26f7-4700-9fbb-5d0df992d9de/resourceGroups/rg-dev/providers/Microsoft.Storage/storageAccounts/swordfish${var.center_name}"
   container_access_type = "private"
 }
 
